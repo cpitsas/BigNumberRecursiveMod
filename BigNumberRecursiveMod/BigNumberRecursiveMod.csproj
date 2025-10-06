@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>BigNumberRecursiveMod</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Authors>Valadis Pitsas</Authors>
 		<Company></Company>
 		<Description>Recursively calculates modulo for large numbers represented as strings.</Description>
