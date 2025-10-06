@@ -180,6 +180,6 @@ If you find a bug or have a suggestion:
 
 ## 👨‍💻 Author
 
-**Your Name**  
-GitHub: [@yourusername](https://github.com/yourusername)  
+**Valadis Pitsas**  
+GitHub: [@cpitsas](https://github.com/cpitsas)  
 NuGet: [BigNumberRecursiveMod](https://www.nuget.org/packages/BigNumberRecursiveMod/)
