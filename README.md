@@ -102,10 +102,19 @@ private static int CalculateRecursive(string numberSequence, int divider, int n)
 }
 ```
 
-### 🔍 Process
-1. Split the number into smaller chunks.
-2. Recursively compute modulo on higher-order digits.
-3. Combine results using modular arithmetic.
+### 🔍 Process Explanation
+
+1. **Divide** the number into smaller pieces (`head` and `tail`).
+2. **Recursively compute** the modulo of the head.
+3. **Combine** the results using modular arithmetic:
+
+   ```
+   combinedMod = (headMod * 10^n + tailInt) % divider
+   ```
+
+4. **Return** the final modulo result.
+
+This ensures correctness even when the number sequence exceeds numeric parsing limits.
 
 ---
 
