@@ -21,9 +21,7 @@ namespace BigNumberRecursiveMod
                 throw new ArgumentException("Divider must be an integer.");
             }
 
-            int n = divider.Length;
-
-            return CalculateRecursive(numberSequence, dividerInt, n);
+            return CalculateRecursive(numberSequence, dividerInt);
         }
 
         /// <summary>
@@ -35,43 +33,23 @@ namespace BigNumberRecursiveMod
         /// <exception cref="ArgumentException"></exception>
         public static int CalculateMod(string numberSequence, int divider)
         {
-            string dividerStr = divider.ToString();
-
-            int n = dividerStr.Length;
-
-            return CalculateRecursive(numberSequence, divider, n);
+            return CalculateRecursive(numberSequence, divider);
         }
 
-        private static int CalculateRecursive(string numberSequence, int divider, int n)
+        private static int CalculateRecursive(string numberSequence, int divider)
         {
-            // Base case: if the sequence length is less than or equal to the chunk size `n`
-            if (numberSequence.Length <= n)
-            {
-                if (!int.TryParse(numberSequence, out int numberSequenceInt))
-                {
-                    throw new ArgumentException("Invalid character in the number sequence. The number sequence string must only contain numbers");
-                }
+            int result = 0;
 
-                // Return mod of the number sequence if its length is less than `n`
-                return numberSequenceInt % divider;
+            foreach (char c in numberSequence)
+            {
+                if (c < '0' || c > '9')
+                    throw new ArgumentException("Invalid character in the number sequence. Only digits allowed.");
+
+                int digit = c - '0';
+                result = (result * 10 + digit) % divider;
             }
 
-            // Split the string into head and tail parts
-            string head = numberSequence.Substring(0, numberSequence.Length - n);
-            string tail = numberSequence.Substring(numberSequence.Length - n, n);
-
-            if (!int.TryParse(tail, out int tailInt))
-            {
-                throw new ArgumentException("Invalid character in the number sequence. The number sequence string must only contain numbers");
-            }
-
-            // Recursive call on the head part
-            int headMod = CalculateRecursive(head, divider, n);
-
-            // Combine headMod and tailInt, accounting for tail as the lower-order digits
-            int combinedMod = (headMod * (int)Math.Pow(10, n) + tailInt) % divider;
-
-            return combinedMod;
+            return result;
         }
     }
 }
