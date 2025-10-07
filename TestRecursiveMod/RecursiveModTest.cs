@@ -84,6 +84,14 @@ public class RecursiveModTest
         long after2 = GC.GetTotalMemory(true);
         long total2 = after2 - before2;
 
+        //long before3 = GC.GetTotalMemory(true);
+        //sw.Start();
+        //int mod3 = RecursiveMod.CalculateRecursiveOld(numberSequence, 97, 2);
+        //sw.Stop();
+        //var time3 = sw.Elapsed;
+        //long after3 = GC.GetTotalMemory(true);
+        //long total3 = after3 - before3;
+
         Assert.Equal(mod1, mod2);
     }
 }

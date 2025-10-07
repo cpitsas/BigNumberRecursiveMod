@@ -51,5 +51,38 @@ namespace BigNumberRecursiveMod
 
             return result;
         }
+
+        [Obsolete]
+        private static int CalculateRecursiveOld(string numberSequence, int divider, int n)
+        {
+            // Base case: if the sequence length is less than or equal to the chunk size `n`
+            if (numberSequence.Length <= n)
+            {
+                if (!int.TryParse(numberSequence, out int numberSequenceInt))
+                {
+                    throw new ArgumentException("Invalid character in the number sequence. The number sequence string must only contain numbers");
+                }
+
+                // Return mod of the number sequence if its length is less than `n`
+                return numberSequenceInt % divider;
+            }
+
+            // Split the string into head and tail parts
+            string head = numberSequence.Substring(0, numberSequence.Length - n);
+            string tail = numberSequence.Substring(numberSequence.Length - n, n);
+
+            if (!int.TryParse(tail, out int tailInt))
+            {
+                throw new ArgumentException("Invalid character in the number sequence. The number sequence string must only contain numbers");
+            }
+
+            // Recursive call on the head part
+            int headMod = CalculateRecursiveOld(head, divider, n);
+
+            // Combine headMod and tailInt, accounting for tail as the lower-order digits
+            int combinedMod = (headMod * (int)Math.Pow(10, n) + tailInt) % divider;
+
+            return combinedMod;
+        }
     }
 }
