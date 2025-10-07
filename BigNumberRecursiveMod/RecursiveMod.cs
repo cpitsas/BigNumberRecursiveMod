@@ -42,8 +42,8 @@ namespace BigNumberRecursiveMod
 
             foreach (char c in numberSequence)
             {
-                if (c < '0' || c > '9')
-                    throw new ArgumentException("Invalid character in the number sequence. Only digits allowed.");
+                //if (c < '0' || c > '9')
+                //    throw new ArgumentException("Invalid character in the number sequence. Only digits allowed.");
 
                 int digit = c - '0';
                 result = (result * 10 + digit) % divider;
